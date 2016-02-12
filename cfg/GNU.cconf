@@ -1,0 +1,18 @@
+#-----------------------------------------------------------------------------
+#
+#
+#
+#-----------------------------------------------------------------------------
+
+STRING(REGEX REPLACE " " "\\\\ " TMPPATH ${CMAKE_SOURCE_DIR})
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release;MinSizeRel;RelWithDebInfo" CACHE STRING "Lnx f" FORCE)
+
+set(CMAKE_C_FLAGS	"${CMAKE_C_FLAGS}	-include ${TMPPATH}/cfg/debfunc.h"		CACHE STRING "Lnx C f" FORCE)
+
+set(CMAKE_C_FLAGS_DEBUG		"${CMAKE_C_FLAGS}	-DDEBUG -g -O0 -DDVERBOSELVL=3 ${CMAKE_C_FLAGS_DEBUG}"		CACHE STRING "Lnx C f d" FORCE)
+
+set(CMAKE_C_FLAGS_RELEASE	"${CMAKE_C_FLAGS}	-DNDEBUG -s -O4 -fomit-frame-pointer -DDVERBOSELVL=2 ${CMAKE_C_FLAGS_RELEASE}"	CACHE STRING "Lnx C f r" FORCE)
+
+set(CMAKE_C_FLAGS_RELWITHDEBINFO	"${CMAKE_C_FLAGS}	-s -g -O0 -fomit-frame-pointer -DDVERBOSELVL=2 ${CMAKE_C_FLAGS_RELWITHDEBINFO}"		CACHE STRING "Lnx C f rd" FORCE)
+
+set(CMAKE_C_FLAGS_MINSIZEREL	"${CMAKE_C_FLAGS}	-DNDEBUG -s -Os -fomit-frame-pointer -DDVERBOSELVL=2 ${CMAKE_C_FLAGS_MINSIZEREL}"	CACHE STRING "Lnx C f mr" FORCE)
